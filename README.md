@@ -1,1 +1,1 @@
-# easymeets_init_structure
+# bsa-2022-easymeets
