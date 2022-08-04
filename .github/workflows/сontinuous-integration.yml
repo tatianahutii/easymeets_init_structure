@@ -32,5 +32,4 @@ jobs:
       - name: Install packages and build Angular
         run: |
           cd frontend
-          yarn ci
-          yarn start build
+          yarn build
