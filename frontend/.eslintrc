@@ -136,7 +136,7 @@
                             // Other relative imports. Put same-folder imports last.
                             ["^\\./(?=[^/]*?/)", "^\\."],
                             // Style and types imports.
-                            ["\\.s?css$", "\\.styles", "\\.types"]
+                            ["\\.s?css$", "\\.sass$", "\\.styles", "\\.types"]
                         ]
                     }
                 ],
