@@ -3,11 +3,10 @@ import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
     selector: 'app-loading-spinner',
-    templateUrl: './loading-spinner.component.html'
+    templateUrl: './loading-spinner.component.html',
 })
 export class LoadingSpinnerComponent {
-
-    constructor(public spinnerService: SpinnerService) { }
+    constructor(public spinnerService: SpinnerService) {}
 
     @Input() overlay: boolean;
     @Input() size = '20px';

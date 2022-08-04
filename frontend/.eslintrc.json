@@ -16,7 +16,8 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -34,21 +35,7 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ],
-        "spaced-comment": "off",
-        "object-curly-newline": "off",
-        "no-console": "off",
-        "import/order": "off",
-        "max-len": ["error", { "code": 140, "ignoreRegExpLiterals": true }],
-        "linebreak-style": "off",
-        "import/prefer-default-export": "off",
-        "implicit-arrow-linebreak": "off",
-        "class-methods-use-this": "off",
-        "arrow-parens": "off",
-        "@typescript-eslint/type-annotation-spacing": "error",
-        "@typescript-eslint/lines-between-class-members": "off",
-        "@typescript-eslint/indent": ["error", 4],
-        "@typescript-eslint/comma-dangle": "off"
+        ]
       }
     },
     {
@@ -59,6 +46,15 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        // NOTE: WE ARE OVERRIDING THE DEFAULT CONFIG TO ALWAYS SET THE PARSER TO ANGULAR (SEE BELOW)
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
     }
   ]
 }

@@ -6,15 +6,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { BaseComponent } from './base/base.component';
 
 @NgModule({
-    imports: [
-        HttpClientModule,
-        SharedModule,
-    ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    ],
-    declarations: [
-      BaseComponent
-    ],
+    imports: [HttpClientModule, SharedModule],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    declarations: [BaseComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

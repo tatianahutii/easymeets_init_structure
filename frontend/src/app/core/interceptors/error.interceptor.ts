@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    HttpHandler,
-    HttpInterceptor,
-    HttpErrorResponse,
-    HttpRequest,
-} from '@angular/common/http';
+import { HttpHandler, HttpInterceptor, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -12,7 +7,7 @@ import { catchError } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor() { }
+    constructor() {}
     handleError(error: HttpErrorResponse) {
         return throwError(() => new Error(error.message ?? 'Something went wrong'));
     }
