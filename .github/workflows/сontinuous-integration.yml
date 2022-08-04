@@ -20,20 +20,17 @@ jobs:
       run: dotnet restore backend/EasyMeets.All.sln
     - name: Build .NET
       run: dotnet build backend/EasyMeets.All.sln --no-restore
-
+      
   build_frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run `yarn install` command
-        uses: borales/actions-yarn@v3.0.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          cmd: install
-      - name: Run `yarn build` command
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: build
-      - name: Run `yarn test` command
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: test
+          node-version: 14.x
+      - name: Install packages and build Angular
+        run: |
+          cd frontend
+          yarn install --frozen-lockfile
+          yarn build
