@@ -4,7 +4,7 @@ import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 @Component({
     selector: 'app-home',
     templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.sass']
+    styleUrls: ['./main-page.component.sass'],
 })
 export class MainComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line no-empty-function
