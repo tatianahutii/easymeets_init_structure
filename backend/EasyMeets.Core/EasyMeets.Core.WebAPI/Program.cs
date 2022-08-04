@@ -1,4 +1,5 @@
 using EasyMeets.Core.WebAPI.Extentions;
+using EasyMeets.Core.WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,11 @@ builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
 
+builder.Services.AddCors();
+builder.Services.AddHealthChecks();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.WebHost.UseUrls("http://*:5050");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,10 +34,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<GenericExceptionHandlerMiddleware>();
+
+app.UseCors(opt => opt
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin());
+
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoinds =>
+{
+    endpoinds.MapHealthChecks("/health");
+    endpoinds.MapControllers();
+});
 
 app.Run();
