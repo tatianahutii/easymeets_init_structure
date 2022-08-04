@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
@@ -16,7 +16,11 @@ export class AppComponent {
             if (event instanceof NavigationStart) {
                 this.spinner.show();
             }
-            if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+            if (
+                event instanceof NavigationEnd ||
+                event instanceof NavigationCancel ||
+                event instanceof NavigationError
+            ) {
                 this.spinner.hide();
             }
         });

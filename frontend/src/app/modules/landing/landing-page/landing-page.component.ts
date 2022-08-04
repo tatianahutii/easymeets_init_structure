@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
@@ -7,5 +7,6 @@ import { SpinnerService } from '@core/services/spinner.service';
     styleUrls: ['./landing-page.component.sass'],
 })
 export class LandingPageComponent {
+    // eslint-disable-next-line no-empty-function
     constructor(private spinnerService: SpinnerService) {}
 }

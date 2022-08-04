@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HubConnection } from '@microsoft/signalr';
 import { Subject, Subscription } from 'rxjs';
+
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
 @Injectable({
@@ -8,11 +9,14 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 })
 export class BroadcastHubService {
     readonly hubUrl = 'broadcastHub';
+
     private hubConnection: HubConnection;
 
     readonly messages = new Subject<string>();
+
     private subscriptions: Subscription[] = [];
 
+    // eslint-disable-next-line no-empty-function
     constructor(private hubFactory: SignalRHubFactoryService) {}
 
     async start() {

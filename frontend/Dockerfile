@@ -1,9 +1,9 @@
 FROM node:14.17.3-alpine3.14 as builder
-COPY package.json package-lock.json ./
-RUN npm install && mkdir /client && mv ./node_modules ./client
+COPY package.json yarn.lock ./
+RUN yarn && mkdir /client && mv ./node_modules ./client
 WORKDIR /client
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM nginx:1.21.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -9,6 +9,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule],
     declarations: [LoadingSpinnerComponent, NotFoundComponent],
-    exports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, LoadingSpinnerComponent, NotFoundComponent],
+    exports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        LoadingSpinnerComponent,
+        NotFoundComponent,
+    ],
 })
 export class SharedModule {}
