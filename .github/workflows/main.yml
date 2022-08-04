@@ -14,10 +14,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: Install packages and lint Angular
+      - name: Install packages
         run: |
           cd frontend
-          yarn install --frozen-lockfile
+          yarn install --frozen-lockfile        
+      - name: Eslint and Prettier checks
+        run: |
+          cd frontend
           yarn lint:check
           yarn prettier:check
  
