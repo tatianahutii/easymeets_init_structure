@@ -26,7 +26,7 @@ jobs:
         name: Build and push Core Service
         uses: docker/build-push-action@v2
         with:
-          tags: tatihutii/codi_core:latest
+          tags: tatihutii/easymeets_core:latest
           context: ./backend
           file: ./backend/EasyMeets.Core/Dockerfile
           build-args: PROJECT_PORT=5050
