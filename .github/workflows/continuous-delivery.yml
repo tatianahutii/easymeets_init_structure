@@ -91,4 +91,4 @@ jobs:
          host: ${{ secrets.HOST }}
          username: ${{ secrets.HOST_USERNAME }}
          password: ${{ secrets.HOST_PASSWORD }}
-         script: cd ~/bsa-2022-easymeets && docker-compose -f docker-compose.apps.prod.yml stop && docker-compose -f docker-compose.apps.prod.yml pull && docker system prune -f && docker-compose -f docker-compose.apps.prod.yml up -d
+         script: cd ~/bsa-2022-easymeets && sudo docker-compose -f docker-compose.apps.prod.yml stop && sudo docker-compose -f docker-compose.apps.prod.yml pull && sudo docker system prune -f && sudo docker-compose -f docker-compose.apps.prod.yml up -d
