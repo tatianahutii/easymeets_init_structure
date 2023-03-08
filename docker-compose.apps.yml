@@ -1,12 +1,12 @@
 version: '3.1'
 services:
-  easymeets_core:
+  easyspeak_core:
     build:
       context: ./backend
-      dockerfile: ./EasyMeets.Core/Dockerfile
+      dockerfile: ./EasySpeak.Core/Dockerfile
       args:
         - PROJECT_PORT=5050
-    container_name: 'easymeets_core'
+    container_name: 'easyspeak_core'
     restart: on-failure
     ports:
         - "5050:5050"
@@ -14,15 +14,15 @@ services:
         - back
     environment:
         ASPNETCORE_ENVIRONMENT: 'Development'
-        ConnectionStrings__easymeetsCoreDBConnection: 'Server=sql_server;Database=EasyMeetsCoreDB;User ID=SA;Password=MySecretPassword!'
+        ConnectionStrings__EasySpeakCoreDBConnection: 'Server=sql_server;Database=EasySpeakCoreDB;User ID=SA;Password=MySecretPassword!'
 
-  easymeets_notifier:
+  easyspeak_notifier:
       build:
         context: ./backend
-        dockerfile: ./EasyMeets.Notifier/Dockerfile
+        dockerfile: ./EasySpeak.Notifier/Dockerfile
         args:
           - PROJECT_PORT=5070
-      container_name: 'easymeets_notifier'
+      container_name: 'easyspeak_notifier'
       restart: on-failure
       ports:
           - "5070:5070"
@@ -31,14 +31,14 @@ services:
       environment:
           ASPNETCORE_ENVIRONMENT: 'Development'
 
-  easymeets_client:
+  easyspeak_client:
     depends_on:
-        - easymeets_core
-        - easymeets_notifier
+        - easyspeak_core
+        - easyspeak_notifier
     build:
         context: ./frontend
         dockerfile: Dockerfile.dev
-    container_name: 'easymeets_frontend'
+    container_name: 'easyspeak_frontend'
     restart: on-failure
     ports:
         - "4200:80"
