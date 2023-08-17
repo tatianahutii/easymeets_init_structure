@@ -5,7 +5,7 @@ namespace EasySpeak.Core.DAL.Context
 {
     public class EasySpeakCoreContext : DbContext
     {
-        public DbSet<Sample> Samples { get; private set; }
+        public DbSet<Sample> Samples => Set<Sample>();
 
         public EasySpeakCoreContext(DbContextOptions<EasySpeakCoreContext> options) : base(options)
         {

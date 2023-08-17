@@ -1,7 +1,19 @@
 version: '3.1'
 services:
+
+    sql_server:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: sql_server
+        ports:
+            - 1433:1433
+        networks:
+            - back
+        environment:
+            SA_PASSWORD: MySecretPassword!
+            ACCEPT_EULA: "Y"
+
     rabbitmq:
-        image: rabbitmq:3.8.19-management
+        image: rabbitmq:3.11.10-management
         container_name: rabbitmq
         restart: on-failure
         ports:
@@ -12,17 +24,6 @@ services:
         environment:
             - "RABBITMQ_DEFAULT_USER=guest"
             - "RABBITMQ_DEFAULT_PASS=guest"
-
-    sql_server:
-        image: mcr.microsoft.com/mssql/server:2017-latest
-        container_name: sql_server
-        ports:
-            - 1433:1433
-        networks:
-            - back
-        environment:
-            SA_PASSWORD: MySecretPassword!
-            ACCEPT_EULA: "Y"
 
 networks:
     back:
