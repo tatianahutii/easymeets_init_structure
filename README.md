@@ -1,1 +1,1 @@
-# bsa-winter-2022-2023-easyspeak
+# bsa-winter-2022-2023-leetwars
