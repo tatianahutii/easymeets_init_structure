@@ -17,9 +17,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore .NET dependencies
-      run: dotnet restore backend/EasySpeak.All.sln
+      run: dotnet restore backend/LeetWars.All.sln
     - name: Build .NET
-      run: dotnet build backend/EasySpeak.All.sln --no-restore
+      run: dotnet build backend/LeetWars.All.sln --no-restore
 
   build_frontend:
     runs-on: ubuntu-latest

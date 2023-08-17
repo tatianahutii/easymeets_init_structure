@@ -1,9 +1,9 @@
 version: '3.1'
 services:
 
-    easyspeak_core:
-        image: tatihutii/easyspeak_core:latest
-        container_name: 'easyspeak_core'
+    leetwars_core:
+        image: tatihutii/leetwars_core:latest
+        container_name: 'leetwars_core'
         restart: on-failure
         networks:
             - back
@@ -16,9 +16,9 @@ services:
         volumes:
            - ./resources:/app/Resources
 
-    easyspeak_notifier:
-        image: tatihutii/easyspeak_notifier:latest
-        container_name: 'easyspeak_notifier'
+    leetwars_notifier:
+        image: tatihutii/leetwars_notifier:latest
+        container_name: 'leetwars_notifier'
         restart: on-failure
         networks:
             - back
@@ -29,12 +29,12 @@ services:
         env_file:
             - /etc/environment
 
-    easyspeak_frontend:
+    leetwars_frontend:
         depends_on:
-            - easyspeak_core
-            - easyspeak_notifier
-        image: tatihutii/easyspeak_frontend:latest
-        container_name: 'easyspeak_frontend'
+            - leetwars_core
+            - leetwars_notifier
+        image: tatihutii/leetwars_frontend:latest
+        container_name: 'leetwars_frontend'
         restart: on-failure
         networks:
             - back
